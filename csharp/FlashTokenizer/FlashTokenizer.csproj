@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageId>FlashTokenizer</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Mufeez Ahmad</Authors>
+    <Description>High-performance WordPiece/BERT tokenizer in C# (port of FlashTokenizer)</Description>
+    <PackageProjectUrl>https://example.com/repo</PackageProjectUrl>
+    <RepositoryUrl>https://example.com/repo</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <IncludeSymbols>false</IncludeSymbols>
+    <IncludeSource>false</IncludeSource>
+    <IsPackable>true</IsPackable>
+    <!-- Performance optimizations -->
+    <TieredCompilation>true</TieredCompilation>
+    <TieredCompilationQuickJit>true</TieredCompilationQuickJit>
+    <ReadyToRun>true</ReadyToRun>
+    <PublishReadyToRun>true</PublishReadyToRun>
+    <PublishSingleFile>false</PublishSingleFile>
+    <PublishTrimmed>false</PublishTrimmed>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="/" Condition="Exists('..\..\README.md')" />
+    <EmbeddedResource Include="upstream_charmap.h" />
+  </ItemGroup>
+</Project>
+

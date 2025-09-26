@@ -1,0 +1,10 @@
+C:\Users\Dell\Downloads\flash-tokenizer-main (2)\flash-tokenizer-main\csharp\FlashTokenizer.Tests\obj\Release\net8.0\FlashTokenizer.Tests.csproj.AssemblyReference.cache
+C:\Users\Dell\Downloads\flash-tokenizer-main (2)\flash-tokenizer-main\csharp\FlashTokenizer.Tests\obj\Release\net8.0\FlashTokenizer.Tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dell\Downloads\flash-tokenizer-main (2)\flash-tokenizer-main\csharp\FlashTokenizer.Tests\obj\Release\net8.0\FlashTokenizer.Tests.AssemblyInfoInputs.cache
+C:\Users\Dell\Downloads\flash-tokenizer-main (2)\flash-tokenizer-main\csharp\FlashTokenizer.Tests\obj\Release\net8.0\FlashTokenizer.Tests.AssemblyInfo.cs
+C:\Users\Dell\Downloads\flash-tokenizer-main (2)\flash-tokenizer-main\csharp\FlashTokenizer.Tests\obj\Release\net8.0\FlashTokenizer.Tests.csproj.CoreCompileInputs.cache
+C:\Users\Mufeez.Ahmad\Downloads\flash-tokenizer-main-C#\csharp\FlashTokenizer.Tests\obj\Release\net8.0\FlashTokenizer.Tests.csproj.AssemblyReference.cache
+C:\Users\Mufeez.Ahmad\Downloads\flash-tokenizer-main-C#\csharp\FlashTokenizer.Tests\obj\Release\net8.0\FlashTokenizer.Tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mufeez.Ahmad\Downloads\flash-tokenizer-main-C#\csharp\FlashTokenizer.Tests\obj\Release\net8.0\FlashTokenizer.Tests.AssemblyInfoInputs.cache
+C:\Users\Mufeez.Ahmad\Downloads\flash-tokenizer-main-C#\csharp\FlashTokenizer.Tests\obj\Release\net8.0\FlashTokenizer.Tests.AssemblyInfo.cs
+C:\Users\Mufeez.Ahmad\Downloads\flash-tokenizer-main-C#\csharp\FlashTokenizer.Tests\obj\Release\net8.0\FlashTokenizer.Tests.csproj.CoreCompileInputs.cache

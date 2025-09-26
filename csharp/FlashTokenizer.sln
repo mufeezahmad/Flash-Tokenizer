@@ -1,0 +1,31 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlashTokenizer", "FlashTokenizer\FlashTokenizer.csproj", "{6F4FC57C-6B26-41C3-9328-5E6E2E5C2B41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlashTokenizer.Console", "FlashTokenizer.Console\FlashTokenizer.Console.csproj", "{B5B2E6D5-2A0B-4B6C-8D45-6D0E1B4E2F0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlashTokenizer.Tests", "FlashTokenizer.Tests\FlashTokenizer.Tests.csproj", "{A2C64564-4B13-4E0E-A4E1-3E2C0F1E3A0F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6F4FC57C-6B26-41C3-9328-5E6E2E5C2B41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F4FC57C-6B26-41C3-9328-5E6E2E5C2B41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F4FC57C-6B26-41C3-9328-5E6E2E5C2B41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F4FC57C-6B26-41C3-9328-5E6E2E5C2B41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5B2E6D5-2A0B-4B6C-8D45-6D0E1B4E2F0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5B2E6D5-2A0B-4B6C-8D45-6D0E1B4E2F0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5B2E6D5-2A0B-4B6C-8D45-6D0E1B4E2F0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5B2E6D5-2A0B-4B6C-8D45-6D0E1B4E2F0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2C64564-4B13-4E0E-A4E1-3E2C0F1E3A0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2C64564-4B13-4E0E-A4E1-3E2C0F1E3A0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2C64564-4B13-4E0E-A4E1-3E2C0F1E3A0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2C64564-4B13-4E0E-A4E1-3E2C0F1E3A0F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
+

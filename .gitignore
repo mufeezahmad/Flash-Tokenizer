@@ -1,0 +1,56 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+.idea/
+res/
+cmake-build*/
+.DS_Store
+dist/
+build/
+src/flash_tokenizer.egg-info/
+secret.txt
+*.7z
+__pycache__/
+*.pyc
+*.parquet
+log.csv
+error_notebook.txt
+perftest_history.md
+perftest/other/
+perftest/test.py
+perftest/.*/
+docs/blackpaper/
+extract.py
+dataset/BPE
+dataset/txt
+perftest/performance_test_splade.py
+*.h5
