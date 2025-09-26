@@ -1,26 +1,60 @@
-# Prerequisites
-*.d
+# ==============================
+# General
+# ==============================
+*.bak
+*.tmp
+*~
+*.log
+*.7z
+*.DS_Store
+*.cache
 
-# Compiled Object files
+# ==============================
+# IDEs and Editors
+# ==============================
+.idea/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# ==============================
+# OS / System
+# ==============================
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ==============================
+# Python
+# ==============================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.ipynb_checkpoints
+src/flash_tokenizer.egg-info/
+
+# ==============================
+# C / C++ / Fortran (Compiled Stuff)
+# ==============================
+# Object files
 *.slo
 *.lo
 *.o
 *.obj
 
-# Precompiled Headers
+# Precompiled headers
 *.gch
 *.pch
 
-# Compiled Dynamic libraries
+# Dynamic libraries
 *.so
 *.dylib
 *.dll
 
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
+# Static libraries
 *.lai
 *.la
 *.a
@@ -30,27 +64,54 @@
 *.exe
 *.out
 *.app
-.idea/
-res/
-cmake-build*/
-.DS_Store
-dist/
+
+# Dependency files
+*.d
+
+# Fortran module files
+*.mod
+*.smod
+
+# ==============================
+# .NET / C#
+# ==============================
+bin/
+obj/
+*.pdb
+
+# ==============================
+# Build & Dist
+# ==============================
 build/
-src/flash_tokenizer.egg-info/
+dist/
+cmake-build*/
+
+# ==============================
+# Project-specific files & folders
+# ==============================
+res/
 secret.txt
-*.7z
-__pycache__/
-*.pyc
-*.parquet
 log.csv
 error_notebook.txt
-perftest_history.md
+extract.py
+
+# Dataset folders (likely large or generated)
+dataset/BPE/
+dataset/txt/
+
+# Performance tests and results
 perftest/other/
 perftest/test.py
-perftest/.*/
-docs/blackpaper/
-extract.py
-dataset/BPE
-dataset/txt
 perftest/performance_test_splade.py
+perftest_history.md
+
+# Ignore hidden files in perftest (if required)
+# Be careful with the following pattern: it may match more than intended
+# perftest/.*/      <-- this is potentially unsafe and is removed here
+
+# Docs
+docs/blackpaper/
+
+# Parquet and model files
+*.parquet
 *.h5
