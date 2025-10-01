@@ -201,6 +201,12 @@ Results are written under `BenchmarkDotNet.Artifacts/results/`.
 
 Defaults: WordPiece, lowercase enabled, `ModelMaxLength = 128`. If `VocabPath` is not set, examples fall back to the repo `sample/vocab.txt`.
 
+## Current Performance
+
+- Input: `jazz_pakistan_faq_Copy.md` (~759k tokens) | File Size 4 M.B Approx
+- Console (Release, .NET 8): `759,222 tokens` in `110.22 ms` → ~6.89M tokens/sec; memory ~740 MB
+- On Parallel Mode: 759,222 tokens in less than `60 ms` → ~12.65M tokens/sec;
+
 ## Build & Deployment
 
 Build everything:
@@ -209,10 +215,6 @@ Build everything:
 cd csharp
 dotnet build FlashTokenizer.sln -c Release
 ```
-
-## Authentication/Security
-
-No authentication or external security surfaces are included. The library operates on local data and does not perform network I/O.
 
 ## Architecture (high level)
 
@@ -224,6 +226,3 @@ No authentication or external security surfaces are included. The library operat
 ## Acknowledgements
 
 - Inspired by the upstream C++ project [NLPOptimize/flash-tokenizer (C++)](https://github.com/NLPOptimize/flash-tokenizer)
-
-
-
