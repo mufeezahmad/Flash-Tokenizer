@@ -1,16 +1,28 @@
 # FlashTokenizer (C#) — High‑Performance WordPiece/BPE Tokenizer
 
 [![.NET](https://img.shields.io/badge/.NET-8.0-512BD4)](https://dotnet.microsoft.com/) 
-
+[![NuGet](https://img.shields.io/nuget/v/FlashTokenizer)](https://www.nuget.org/packages/FlashTokenizer/) 
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) 
+[![Performance](https://img.shields.io/badge/performance-12.7M%20tokens%2Fsec-brightgreen)](https://github.com/mufeezahmad/flash-tokenizer)
 ---
 
 ## Project Description
 
 FlashTokenizer is a high‑performance, fully managed .NET implementation of fast NLP tokenization. It supports BERT WordPiece and GPT‑2 style BPE tokenization with optimized UTF‑8 text processing, trie‑accelerated subword matching, and optional bidirectional WordPiece fallback for robustness.
 
-- **What it is**: A C#/.NET 8 library and sample apps for tokenizing text into model‑ready token IDs.
-- **What it does**: Provides production‑grade APIs to encode/decode text, batch operations, and benchmark suites to measure throughput and latency.
-- **Purpose & use cases**: Low‑latency inference, RAG pipelines, preprocessing in model serving, and large‑scale offline tokenization.
+### What it does
+- **Tokenizes text** into model‑ready tokens (strings or IDs)
+- **Processes large documents** with parallel and async processing  
+- **Optimizes performance** with SIMD acceleration and memory pooling
+- **Supports multiple algorithms** (BERT WordPiece, GPT-2 BPE)
+- **Handles Unicode properly** with UTF-8 optimization and accent stripping
+
+### Use cases
+- **AI/ML Pipelines**: BERT, GPT, transformer model preprocessing
+- **Data Processing**: Large‑scale text analysis and ETL workflows
+- **Search Systems**: Text indexing and retrieval applications  
+- **NLP Applications**: Chatbots, sentiment analysis, text classification
+- **Document Processing**: Academic papers, legal documents, content analysis
 
 ## Features
 
@@ -86,7 +98,13 @@ sample/                           # Example vocab/config assets
 Prerequisites:
 - .NET 8 SDK
 
-Options:
+### Via NuGet (recommended)
+
+```powershell
+dotnet add package FlashTokenizer
+```
+
+### Options:
 
 1) Project reference (recommended during development)
 
@@ -106,48 +124,115 @@ dotnet add package FlashTokenizer --source .
 
 ## Usage
 
-### Library (BERT / WordPiece)
+### Quick Start (NuGet Package)
 
 ```csharp
 using FlashTokenizer;
 
+// Simple string tokenization
+var tokenizer = new Tokenizer(doLowerCase: true);
+List<string> tokens = tokenizer.Tokenize("Hello, world!");
+
+// High-performance BERT WordPiece (recommended for production)
+var bertTokenizer = new FlashBertTokenizerOptimized(
+    vocabPath: "path/to/vocab.txt",
+    doLowerCase: true,
+    modelMaxLength: -1  // unlimited length
+);
+var tokenIds = bertTokenizer.Encode("Hello, world!", padding: "longest", maxLength: -1);
+```
+### Available Tokenizer Modes
+
+#### 1. **Simple String Tokenizer** (Basic preprocessing)
+```csharp
+var tokenizer = new Tokenizer(doLowerCase: true, tokenizeChineseChars: true);
+List<string> tokens = tokenizer.Tokenize("Hello, world!");
+```
+
+#### 2. **High-Performance BERT** (Recommended for large documents)
+```csharp
+var tokenizer = new FlashBertTokenizerOptimized(
+    vocabPath: "vocab.txt",
+    doLowerCase: true,
+    modelMaxLength: -1,  // unlimited
+    tokenizeChineseChars: true
+);
+var ids = tokenizer.Encode(text, padding: "longest", maxLength: -1);
+```
+
+#### 3. **Parallel BERT** (Multi-threaded for huge files)
+```csharp
+var tokenizer = new FlashBertTokenizerParallel(
+    vocabPath: "vocab.txt",
+    doLowerCase: true,
+    modelMaxLength: -1,
+    tokenizeChineseChars: true,
+    maxDegreeOfParallelism: Environment.ProcessorCount,
+    chunkSize: 256 * 1024
+);
+var ids = tokenizer.Encode(largeText);
+```
+
+#### 4. **Async Streaming** (For file processing)
+```csharp
+using var pipeline = new AsyncTokenizerPipeline(
+    vocabPath: "vocab.txt",
+    doLowerCase: true,
+    modelMaxLength: -1,
+    tokenizeChineseChars: true,
+    maxDegreeOfParallelism: Environment.ProcessorCount,
+    chunkSize: 128 * 1024,
+    bufferSize: 1024 * 1024
+);
+var ids = await pipeline.ProcessFileAsync("large_file.txt");
+```
+
+#### 5. **Bidirectional BERT** (Robust fallback)
+```csharp
+var tokenizer = new FlashBertTokenizerBidirectional(
+    vocabPath: "vocab.txt",
+    doLowerCase: true,
+    modelMaxLength: -1
+);
+var ids = tokenizer.Encode(text, padding: "longest", maxLength: -1);
+```
+
+#### 6. **BPE (GPT-2 style)**
+```csharp
+var tokenizer = new BpeTokenizer(
+    vocabJsonPath: "vocab.json",
+    mergesPath: "merges.txt"
+);
+var ids = tokenizer.Encode("The quick brown fox");
+```
+
+#### 7. **Unified Facade** (Auto-selects algorithm)
+```csharp
+// BERT WordPiece
 var tok = new FlashTokenizer(new TokenizerOptions
 {
-    VocabPath = "path/to/vocab.txt",
+    VocabPath = "vocab.txt",
     DoLowerCase = true,
-    ModelMaxLength = 128,
+    ModelMaxLength = -1,  // unlimited
     EnableBidirectional = false,
-    Type = TokenizerType.Bert,
+    Type = TokenizerType.Bert
 });
 
-var ids = tok.Encode("Hello, world!");
-var text = tok.Decode(ids);
-```
-
-Enable bidirectional fallback:
-
-```csharp
-var tokBi = new FlashTokenizer(new TokenizerOptions
-{
-    VocabPath = "path/to/vocab.txt",
-    EnableBidirectional = true,
-    Type = TokenizerType.Bert,
-});
-```
-
-### Library (GPT‑2 BPE)
-
-```csharp
-var tok = new FlashTokenizer(new TokenizerOptions
+// BPE
+var bpeTok = new FlashTokenizer(new TokenizerOptions
 {
     Type = TokenizerType.BPE,
-    BpeVocabJsonPath = "path/to/vocab.json",
-    BpeMergesPath = "path/to/merges.txt",
+    BpeVocabJsonPath = "vocab.json",
+    BpeMergesPath = "merges.txt"
 });
-
-var ids = tok.Encode("The quick brown fox");
-var text = tok.Decode(ids);
 ```
+
+### Performance Recommendations
+
+- **Small texts** (< 1KB): Use `Tokenizer` or `FlashBertTokenizer`
+- **Medium documents** (1KB - 1MB): Use `FlashBertTokenizerOptimized`
+- **Large files** (> 1MB): Use `FlashBertTokenizerParallel` or `AsyncTokenizerPipeline`
+- **Robust processing**: Add `EnableBidirectional = true` or use `FlashBertTokenizerBidirectional`
 
 ### Console runner
 
@@ -215,6 +300,16 @@ Build everything:
 cd csharp
 dotnet build FlashTokenizer.sln -c Release
 ```
+
+Create a NuGet package from the library project:
+
+```powershell
+cd csharp/FlashTokenizer
+dotnet pack -c Release
+```
+
+The package will be generated under `csharp/FlashTokenizer/bin/Release/`.
+
 
 ## Architecture (high level)
 
