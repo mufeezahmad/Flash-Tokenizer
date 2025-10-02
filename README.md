@@ -6,6 +6,9 @@
 [![Performance](https://img.shields.io/badge/performance-12.7M%20tokens%2Fsec-brightgreen)](https://github.com/mufeezahmad/flash-tokenizer)
 ---
 
+**Get it on NuGet**  
+FlashTokenizer is available as a NuGet package: [**FlashTokenizer on nuget.org**](https://www.nuget.org/packages/FlashTokenizer/)
+
 ## Project Description
 
 FlashTokenizer is a high‑performance, fully managed .NET implementation of fast NLP tokenization. It supports BERT WordPiece and GPT‑2 style BPE tokenization with optimized UTF‑8 text processing, trie‑accelerated subword matching, and optional bidirectional WordPiece fallback for robustness.
@@ -103,6 +106,8 @@ Prerequisites:
 ```powershell
 dotnet add package FlashTokenizer
 ```
+
+Install from [NuGet.org](https://www.nuget.org/packages/FlashTokenizer)
 
 ### Options:
 
